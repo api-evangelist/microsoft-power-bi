@@ -1,5 +1,22 @@
 aid: microsoft-power-bi
+name: Microsoft Power BI
+description: >-
+  Microsoft Power BI is a business analytics service that delivers insights
+  to enable fast, informed decisions. It provides REST APIs for accessing
+  and managing Power BI resources including reports, dashboards, datasets,
+  and workspaces programmatically.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Business Intelligence
+  - Analytics
+  - Reports
+  - Dashboards
+  - Microsoft
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-power-bi/refs/heads/main/apis.yml
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
   - aid: microsoft-power-bi:rest-api
     name: Power BI REST API
@@ -8,14 +25,14 @@ apis:
       - Analytics
       - Reports
       - Dashboards
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/
     humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
     properties:
       - url: https://learn.microsoft.com/en-us/rest/api/power-bi/
         type: Documentation
       - url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
-        type: API Reference
+        type: Reference
     description: >-
       The Power BI REST API enables programmatic access to Power BI
       resources including datasets, reports, dashboards, workspaces,
@@ -28,7 +45,7 @@ apis:
       - Embedded Analytics
       - Business Intelligence
       - White Label
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/
     humanURL: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
     properties:
@@ -46,7 +63,7 @@ apis:
       - Administration
       - Governance
       - Tenant Management
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/admin/
     humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/admin
     properties:
@@ -64,7 +81,7 @@ apis:
       - Real-time Data
       - Streaming
       - Datasets
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/
     humanURL: https://learn.microsoft.com/en-us/power-bi/developer/automation/api-automatic-retention-policy-for-real-time-data
     properties:
@@ -79,20 +96,28 @@ apis:
 common:
   - type: Portal
     url: https://app.powerbi.com/
-  - type: Developer Portal
-    url: https://developer.microsoft.com/
+  - type: Website
+    url: https://powerbi.microsoft.com/
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-bi/
   - type: Pricing
     url: https://powerbi.microsoft.com/en-us/pricing/
   - type: Authentication
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
   - type: SDKs
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
+  - type: Community
+    url: https://community.fabric.microsoft.com/t5/Power-BI-forums/ct-p/pbi_english
+  - type: Blog
+    url: https://powerbi.microsoft.com/en-us/blog/
   - type: Terms of Service
     url: https://www.microsoft.com/en-us/legal/terms-of-use
   - type: Privacy Policy
     url: https://privacy.microsoft.com/en-us/privacystatement
   - type: Support
     url: https://support.microsoft.com/
+  - type: Status
+    url: https://status.powerplatform.microsoft.com/
 maintainers:
-  - name: Kin Lane
+  - FN: Kin Lane
     email: kin@apievangelist.com
