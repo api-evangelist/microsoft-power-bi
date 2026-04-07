@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Business Intelligence
   - Analytics
-  - Reports
+  - Business Intelligence
   - Dashboards
   - Microsoft
+  - Reports
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-power-bi/refs/heads/main/apis.yml
 created: '2024-01-01'
 modified: '2026-03-16'
@@ -21,10 +21,10 @@ apis:
   - aid: microsoft-power-bi:rest-api
     name: Power BI REST API
     tags:
-      - Business Intelligence
       - Analytics
-      - Reports
+      - Business Intelligence
       - Dashboards
+      - Reports
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/
     humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
@@ -42,8 +42,8 @@ apis:
   - aid: microsoft-power-bi:embedded-api
     name: Power BI Embedded API
     tags:
-      - Embedded Analytics
       - Business Intelligence
+      - Embedded Analytics
       - White Label
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/
@@ -78,9 +78,9 @@ apis:
   - aid: microsoft-power-bi:push-datasets-api
     name: Power BI Push Datasets API
     tags:
-      - Real-time Data
-      - Streaming
       - Datasets
+      - Real-Time Data
+      - Streaming
     image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.powerbi.com/v1.0/myorg/
     humanURL: https://learn.microsoft.com/en-us/power-bi/developer/automation/api-automatic-retention-policy-for-real-time-data
