@@ -33,6 +33,8 @@ apis:
         type: Documentation
       - url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
         type: Reference
+      - url: openapi/microsoft-power-bi-openapi.yml
+        type: OpenAPI
     description: >-
       The Power BI REST API enables programmatic access to Power BI
       resources including datasets, reports, dashboards, workspaces,
