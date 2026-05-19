@@ -1,0 +1,268 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Power BI REST API — Datasets
+  description: 'Microsoft Power BI REST API — Datasets. 7 operations. Lead operation: Get Datasets. Self-contained Naftiko
+    capability covering one Microsoft Power Bi business surface.'
+  tags:
+  - Microsoft Power Bi
+  - Datasets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_POWER_BI_API_KEY: MICROSOFT_POWER_BI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-power-bi-datasets
+    baseUri: https://api.powerbi.com/v1.0/myorg
+    description: Microsoft Power BI REST API — Datasets business capability. Self-contained, no shared references.
+    resources:
+    - name: datasets
+      path: /datasets
+      operations:
+      - name: getdatasets
+        method: GET
+        description: Get Datasets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-datasetId
+      path: /datasets/{datasetId}
+      operations:
+      - name: getdataset
+        method: GET
+        description: Get Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedataset
+        method: DELETE
+        description: Delete Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-datasetId-executeQueries
+      path: /datasets/{datasetId}/executeQueries
+      operations:
+      - name: executequeries
+        method: POST
+        description: Execute Queries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: datasets-datasetId-refreshes
+      path: /datasets/{datasetId}/refreshes
+      operations:
+      - name: refreshdataset
+        method: POST
+        description: Refresh Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: getrefreshhistory
+        method: GET
+        description: Get Refresh History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups-groupId-datasets
+      path: /groups/{groupId}/datasets
+      operations:
+      - name: getdatasetsingroup
+        method: GET
+        description: Get Datasets In Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_POWER_BI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-power-bi-datasets-rest
+    port: 8080
+    description: REST adapter for Microsoft Power BI REST API — Datasets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/datasets
+      name: datasets
+      description: REST surface for datasets.
+      operations:
+      - method: GET
+        name: getdatasets
+        description: Get Datasets
+        call: microsoft-power-bi-datasets.getdatasets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}
+      name: datasets-datasetid
+      description: REST surface for datasets-datasetId.
+      operations:
+      - method: GET
+        name: getdataset
+        description: Get Dataset
+        call: microsoft-power-bi-datasets.getdataset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedataset
+        description: Delete Dataset
+        call: microsoft-power-bi-datasets.deletedataset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}/executequeries
+      name: datasets-datasetid-executequeries
+      description: REST surface for datasets-datasetId-executeQueries.
+      operations:
+      - method: POST
+        name: executequeries
+        description: Execute Queries
+        call: microsoft-power-bi-datasets.executequeries
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}/refreshes
+      name: datasets-datasetid-refreshes
+      description: REST surface for datasets-datasetId-refreshes.
+      operations:
+      - method: POST
+        name: refreshdataset
+        description: Refresh Dataset
+        call: microsoft-power-bi-datasets.refreshdataset
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getrefreshhistory
+        description: Get Refresh History
+        call: microsoft-power-bi-datasets.getrefreshhistory
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{groupid}/datasets
+      name: groups-groupid-datasets
+      description: REST surface for groups-groupId-datasets.
+      operations:
+      - method: GET
+        name: getdatasetsingroup
+        description: Get Datasets In Group
+        call: microsoft-power-bi-datasets.getdatasetsingroup
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-power-bi-datasets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Power BI REST API — Datasets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-datasets
+      description: Get Datasets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-datasets.getdatasets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dataset
+      description: Get Dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-datasets.getdataset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dataset
+      description: Delete Dataset
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-power-bi-datasets.deletedataset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: execute-queries
+      description: Execute Queries
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-power-bi-datasets.executequeries
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: refresh-dataset
+      description: Refresh Dataset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-power-bi-datasets.refreshdataset
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-refresh-history
+      description: Get Refresh History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-datasets.getrefreshhistory
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-datasets-group
+      description: Get Datasets In Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-datasets.getdatasetsingroup
+      outputParameters:
+      - type: object
+        mapping: $.

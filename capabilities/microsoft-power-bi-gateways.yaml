@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Power BI REST API — Gateways
+  description: 'Microsoft Power BI REST API — Gateways. 1 operations. Lead operation: Get Gateways. Self-contained Naftiko
+    capability covering one Microsoft Power Bi business surface.'
+  tags:
+  - Microsoft Power Bi
+  - Gateways
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_POWER_BI_API_KEY: MICROSOFT_POWER_BI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-power-bi-gateways
+    baseUri: https://api.powerbi.com/v1.0/myorg
+    description: Microsoft Power BI REST API — Gateways business capability. Self-contained, no shared references.
+    resources:
+    - name: gateways
+      path: /gateways
+      operations:
+      - name: getgateways
+        method: GET
+        description: Get Gateways
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_POWER_BI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-power-bi-gateways-rest
+    port: 8080
+    description: REST adapter for Microsoft Power BI REST API — Gateways. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/gateways
+      name: gateways
+      description: REST surface for gateways.
+      operations:
+      - method: GET
+        name: getgateways
+        description: Get Gateways
+        call: microsoft-power-bi-gateways.getgateways
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-power-bi-gateways-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Power BI REST API — Gateways. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-gateways
+      description: Get Gateways
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-gateways.getgateways
+      outputParameters:
+      - type: object
+        mapping: $.

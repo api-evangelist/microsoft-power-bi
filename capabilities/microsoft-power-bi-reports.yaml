@@ -1,0 +1,243 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Power BI REST API — Reports
+  description: 'Microsoft Power BI REST API — Reports. 6 operations. Lead operation: Get Reports In Group. Self-contained
+    Naftiko capability covering one Microsoft Power Bi business surface.'
+  tags:
+  - Microsoft Power Bi
+  - Reports
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_POWER_BI_API_KEY: MICROSOFT_POWER_BI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-power-bi-reports
+    baseUri: https://api.powerbi.com/v1.0/myorg
+    description: Microsoft Power BI REST API — Reports business capability. Self-contained, no shared references.
+    resources:
+    - name: groups-groupId-reports
+      path: /groups/{groupId}/reports
+      operations:
+      - name: getreportsingroup
+        method: GET
+        description: Get Reports In Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reports
+      path: /reports
+      operations:
+      - name: getreports
+        method: GET
+        description: Get Reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reports-reportId
+      path: /reports/{reportId}
+      operations:
+      - name: getreport
+        method: GET
+        description: Get Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletereport
+        method: DELETE
+        description: Delete Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reports-reportId-Clone
+      path: /reports/{reportId}/Clone
+      operations:
+      - name: clonereport
+        method: POST
+        description: Clone Report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: reports-reportId-ExportTo
+      path: /reports/{reportId}/ExportTo
+      operations:
+      - name: exporttofile
+        method: POST
+        description: Export To File
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_POWER_BI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-power-bi-reports-rest
+    port: 8080
+    description: REST adapter for Microsoft Power BI REST API — Reports. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/groups/{groupid}/reports
+      name: groups-groupid-reports
+      description: REST surface for groups-groupId-reports.
+      operations:
+      - method: GET
+        name: getreportsingroup
+        description: Get Reports In Group
+        call: microsoft-power-bi-reports.getreportsingroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reports
+      name: reports
+      description: REST surface for reports.
+      operations:
+      - method: GET
+        name: getreports
+        description: Get Reports
+        call: microsoft-power-bi-reports.getreports
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reports/{reportid}
+      name: reports-reportid
+      description: REST surface for reports-reportId.
+      operations:
+      - method: GET
+        name: getreport
+        description: Get Report
+        call: microsoft-power-bi-reports.getreport
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletereport
+        description: Delete Report
+        call: microsoft-power-bi-reports.deletereport
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reports/{reportid}/clone
+      name: reports-reportid-clone
+      description: REST surface for reports-reportId-Clone.
+      operations:
+      - method: POST
+        name: clonereport
+        description: Clone Report
+        call: microsoft-power-bi-reports.clonereport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reports/{reportid}/exportto
+      name: reports-reportid-exportto
+      description: REST surface for reports-reportId-ExportTo.
+      operations:
+      - method: POST
+        name: exporttofile
+        description: Export To File
+        call: microsoft-power-bi-reports.exporttofile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-power-bi-reports-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Power BI REST API — Reports. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-reports-group
+      description: Get Reports In Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-reports.getreportsingroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-reports
+      description: Get Reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-reports.getreports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-report
+      description: Get Report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-power-bi-reports.getreport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-report
+      description: Delete Report
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-power-bi-reports.deletereport
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: clone-report
+      description: Clone Report
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-power-bi-reports.clonereport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-file
+      description: Export To File
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-power-bi-reports.exporttofile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
