@@ -2,10 +2,10 @@
   "repo": "microsoft-power-bi",
   "feeds": [
     {
-      "source": "https://powerbi.microsoft.com/en-us/blog/feed/",
-      "feed_url": "https://powerbi.microsoft.com/en-us/blog/feed/",
+      "source": "https://community.fabric.microsoft.com/oxcrx34285/rss/board?board.id=fbc_pbiupdatesblog",
+      "feed_url": "https://community.fabric.microsoft.com/oxcrx34285/rss/board?board.id=fbc_pbiupdatesblog",
       "title": "",
-      "saved": 0,
+      "saved": 2,
       "method": "feed"
     },
     {
@@ -13,6 +13,6 @@
       "error": "HTTPError"
     }
   ],
-  "post_count": 27,
-  "fetched": "2026-06-01T23:35:02Z"
+  "post_count": 33,
+  "fetched": "2026-06-14T20:42:17Z"
 }
