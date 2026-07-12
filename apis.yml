@@ -88,6 +88,13 @@ apis:
       of data directly to streaming datasets for real-time dashboard visualizations, supporting IoT scenarios, live
       monitoring, and event-driven analytics without requiring scheduled data refreshes.
 common:
+  - type: DomainSecurity
+    url: security/microsoft-power-bi-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-power-bi-authentication.yml
+  - name: Agent Skills
+    url: https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/AI-Powered-Power-BI-reporting-From-design-to-deployment-with/ba-p/5190703
+    type: AgentSkills
   - type: GitHubOrganization
     url: https://github.com/microsoft
   - type: LinkedIn
