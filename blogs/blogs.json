@@ -3,16 +3,13 @@
   "feeds": [
     {
       "source": "https://community.fabric.microsoft.com/oxcrx34285/rss/board?board.id=fbc_pbiupdatesblog",
-      "feed_url": "https://community.fabric.microsoft.com/oxcrx34285/rss/board?board.id=fbc_pbiupdatesblog",
-      "title": "",
-      "saved": 2,
-      "method": "feed"
+      "error": "HTTPError"
     },
     {
       "source": "https://community.fabric.microsoft.com/t5/Power-BI-forums/ct-p/pbi_english",
       "error": "HTTPError"
     }
   ],
-  "post_count": 40,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 44,
+  "fetched": "2026-07-11T11:50:51Z"
 }
