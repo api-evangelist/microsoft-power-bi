@@ -88,6 +88,8 @@ apis:
       of data directly to streaming datasets for real-time dashboard visualizations, supporting IoT scenarios, live
       monitoring, and event-driven analytics without requiring scheduled data refreshes.
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-power-bi-agentic-access.yml
   - type: DomainSecurity
     url: security/microsoft-power-bi-domain-security.yml
   - type: Authentication
