@@ -1,0 +1,46 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Power BI REST Apps API
+  description: Minimal OpenAPI definition for the Power BI REST API covering common operations on datasets, reports, dashboards, groups (workspaces), gateways, apps, capacities, dataflows, imports, and embed tokens.
+  version: v1.0
+  x-generated-from: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API base URL (current user / 'My workspace' scope)
+security:
+- bearerAuth: []
+tags:
+- name: Apps
+paths:
+  /apps:
+    get:
+      tags:
+      - Apps
+      summary: Get Apps
+      operationId: getApps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+components:
+  schemas:
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
+    GenericObject:
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

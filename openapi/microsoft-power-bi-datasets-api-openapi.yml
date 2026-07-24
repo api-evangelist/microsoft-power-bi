@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Power BI REST Apps Datasets API
+  description: Minimal OpenAPI definition for the Power BI REST API covering common operations on datasets, reports, dashboards, groups (workspaces), gateways, apps, capacities, dataflows, imports, and embed tokens.
+  version: v1.0
+  x-generated-from: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API base URL (current user / 'My workspace' scope)
+security:
+- bearerAuth: []
+tags:
+- name: Datasets
+paths:
+  /datasets:
+    get:
+      tags:
+      - Datasets
+      summary: Get Datasets
+      operationId: getDatasets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /datasets/{datasetId}:
+    parameters:
+    - $ref: '#/components/parameters/DatasetId'
+    get:
+      tags:
+      - Datasets
+      summary: Get Dataset
+      operationId: getDataset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericObject'
+    delete:
+      tags:
+      - Datasets
+      summary: Delete Dataset
+      operationId: deleteDataset
+      responses:
+        '200':
+          description: OK
+  /datasets/{datasetId}/refreshes:
+    parameters:
+    - $ref: '#/components/parameters/DatasetId'
+    post:
+      tags:
+      - Datasets
+      summary: Refresh Dataset
+      operationId: refreshDataset
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '202':
+          description: Accepted
+    get:
+      tags:
+      - Datasets
+      summary: Get Refresh History
+      operationId: getRefreshHistory
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /datasets/{datasetId}/executeQueries:
+    parameters:
+    - $ref: '#/components/parameters/DatasetId'
+    post:
+      tags:
+      - Datasets
+      summary: Execute Queries
+      operationId: executeQueries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericObject'
+  /groups/{groupId}/datasets:
+    parameters:
+    - in: path
+      name: groupId
+      required: true
+      schema:
+        type: string
+    get:
+      tags:
+      - Datasets
+      summary: Get Datasets In Group
+      operationId: getDatasetsInGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+components:
+  parameters:
+    DatasetId:
+      in: path
+      name: datasetId
+      required: true
+      schema:
+        type: string
+  schemas:
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true
+    GenericObject:
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
