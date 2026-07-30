@@ -5,7 +5,20 @@ description: >-
   provides REST APIs for accessing and managing Power BI resources including reports, dashboards, datasets, and
   workspaces programmatically.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/microsoft-power-bi.png
 tags:
   - Analytics
   - Business Intelligence
@@ -17,76 +30,197 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: microsoft-power-bi:rest-api
-    name: Power BI REST API
-    tags:
-      - Analytics
-      - Business Intelligence
-      - Dashboards
-      - Reports
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.powerbi.com/v1.0/myorg/
-    humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
-    properties:
-      - url: https://learn.microsoft.com/en-us/rest/api/power-bi/
-        type: Documentation
-      - url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
-        type: Reference
-      - url: openapi/microsoft-power-bi-openapi.yml
-        type: OpenAPI
-    description: >-
-      The Power BI REST API enables programmatic access to Power BI resources including datasets, reports, dashboards,
-      workspaces, and dataflows. Developers can automate report deployment, manage workspace permissions, refresh
-      datasets, export reports, and embed Power BI content in custom applications.
-  - aid: microsoft-power-bi:embedded-api
-    name: Power BI Embedded API
-    tags:
-      - Business Intelligence
-      - Embedded Analytics
-      - White Label
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.powerbi.com/v1.0/myorg/
-    humanURL: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
-    properties:
-      - url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
-        type: Documentation
-    description: >-
-      Power BI Embedded enables developers to embed interactive Power BI reports, dashboards, and tiles into custom
-      applications. It provides client-side JavaScript APIs for rendering and interacting with embedded content,
-      supporting scenarios like white-label analytics, custom filtering, and programmatic report navigation.
-  - aid: microsoft-power-bi:admin-api
-    name: Power BI Admin REST API
-    tags:
-      - Administration
-      - Governance
-      - Tenant Management
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.powerbi.com/v1.0/myorg/admin/
-    humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/admin
-    properties:
-      - url: https://learn.microsoft.com/en-us/rest/api/power-bi/admin
-        type: Documentation
-    description: >-
-      The Power BI Admin REST API provides tenant-level administrative capabilities for managing Power BI across an
-      organization. It enables administrators to audit user activities, manage workspaces, scan datasets for governance,
-      retrieve tenant settings, and monitor capacity usage and performance metrics.
-  - aid: microsoft-power-bi:push-datasets-api
-    name: Power BI Push Datasets API
-    tags:
-      - Datasets
-      - Real-Time Data
-      - Streaming
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://api.powerbi.com/v1.0/myorg/
-    humanURL: https://learn.microsoft.com/en-us/power-bi/developer/automation/api-automatic-retention-policy-for-real-time-data
-    properties:
-      - url: >-
-          https://learn.microsoft.com/en-us/power-bi/developer/automation/api-automatic-retention-policy-for-real-time-data
-        type: Documentation
-    description: >-
-      The Power BI Push Datasets API enables real-time data streaming into Power BI datasets. Developers can push rows
-      of data directly to streaming datasets for real-time dashboard visualizations, supporting IoT scenarios, live
-      monitoring, and event-driven analytics without requiring scheduled data refreshes.
+- aid: microsoft-power-bi:embedded-api
+  name: Power BI Embedded API
+  tags:
+  - Business Intelligence
+  - Embedded Analytics
+  - White Label
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  humanURL: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
+  properties:
+  - url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
+    type: Documentation
+  description: >-
+    Power BI Embedded enables developers to embed interactive Power BI reports, dashboards, and tiles
+    into custom applications. It provides client-side JavaScript APIs for rendering and interacting with
+    embedded content, supporting scenarios like white-label analytics, custom filtering, and programmatic
+    report navigation.
+- aid: microsoft-power-bi:admin-api
+  name: Power BI Admin REST API
+  tags:
+  - Administration
+  - Governance
+  - Tenant Management
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.powerbi.com/v1.0/myorg/admin/
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/admin
+  properties:
+  - url: https://learn.microsoft.com/en-us/rest/api/power-bi/admin
+    type: Documentation
+  description: >-
+    The Power BI Admin REST API provides tenant-level administrative capabilities for managing Power BI
+    across an organization. It enables administrators to audit user activities, manage workspaces, scan
+    datasets for governance, retrieve tenant settings, and monitor capacity usage and performance metrics.
+- aid: microsoft-power-bi:push-datasets-api
+  name: Power BI Push Datasets API
+  tags:
+  - Datasets
+  - Real-Time Data
+  - Streaming
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  humanURL: >-
+    https://learn.microsoft.com/en-us/power-bi/developer/automation/api-automatic-retention-policy-for-real-time-data
+  properties:
+  - url: >-
+      https://learn.microsoft.com/en-us/power-bi/developer/automation/api-automatic-retention-policy-for-real-time-data
+    type: Documentation
+  description: >-
+    The Power BI Push Datasets API enables real-time data streaming into Power BI datasets. Developers
+    can push rows of data directly to streaming datasets for real-time dashboard visualizations, supporting
+    IoT scenarios, live monitoring, and event-driven analytics without requiring scheduled data refreshes.
+- aid: microsoft-power-bi:microsoft-power-bi-apps-api
+  name: Microsoft Power BI Apps API
+  description: The Apps API from Microsoft Power BI — 1 operation(s) for apps.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-apps-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-capacities-api
+  name: Microsoft Power BI Capacities API
+  description: The Capacities API from Microsoft Power BI — 1 operation(s) for capacities.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Capacities
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-capacities-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-dashboards-api
+  name: Microsoft Power BI Dashboards API
+  description: The Dashboards API from Microsoft Power BI — 2 operation(s) for dashboards.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-dataflows-api
+  name: Microsoft Power BI Dataflows API
+  description: The Dataflows API from Microsoft Power BI — 1 operation(s) for dataflows.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Dataflows
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-dataflows-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-datasets-api
+  name: Microsoft Power BI Datasets API
+  description: The Datasets API from Microsoft Power BI — 5 operation(s) for datasets.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-embedtoken-api
+  name: Microsoft Power BI EmbedToken API
+  description: The EmbedToken API from Microsoft Power BI — 1 operation(s) for embedtoken.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - EmbedToken
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-embedtoken-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-gateways-api
+  name: Microsoft Power BI Gateways API
+  description: The Gateways API from Microsoft Power BI — 1 operation(s) for gateways.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-groups-api
+  name: Microsoft Power BI Groups API
+  description: The Groups API from Microsoft Power BI — 2 operation(s) for groups.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-groups-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-imports-api
+  name: Microsoft Power BI Imports API
+  description: The Imports API from Microsoft Power BI — 1 operation(s) for imports.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Imports
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-imports-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-reports-api
+  name: Microsoft Power BI Reports API
+  description: The Reports API from Microsoft Power BI — 5 operation(s) for reports.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-power-bi-reports-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
 common:
   - type: AgenticAccess
     url: agentic-access/microsoft-power-bi-agentic-access.yml
