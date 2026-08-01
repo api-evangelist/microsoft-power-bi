@@ -1,0 +1,389 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Power BI REST API
+  description: >-
+    Minimal OpenAPI definition for the Power BI REST API covering common
+    operations on datasets, reports, dashboards, groups (workspaces), gateways,
+    apps, capacities, dataflows, imports, and embed tokens.
+  version: v1.0
+  x-generated-from: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://api.powerbi.com/v1.0/myorg
+    description: Power BI REST API base URL (current user / 'My workspace' scope)
+security:
+  - bearerAuth: []
+tags:
+  - name: Datasets
+  - name: Reports
+  - name: Dashboards
+  - name: Groups
+  - name: Gateways
+  - name: Apps
+  - name: Capacities
+  - name: Dataflows
+  - name: Imports
+  - name: EmbedToken
+paths:
+  /datasets:
+    get:
+      tags: [Datasets]
+      summary: Get Datasets
+      operationId: getDatasets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /datasets/{datasetId}:
+    parameters:
+      - $ref: '#/components/parameters/DatasetId'
+    get:
+      tags: [Datasets]
+      summary: Get Dataset
+      operationId: getDataset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericObject'
+    delete:
+      tags: [Datasets]
+      summary: Delete Dataset
+      operationId: deleteDataset
+      responses:
+        '200':
+          description: OK
+  /datasets/{datasetId}/refreshes:
+    parameters:
+      - $ref: '#/components/parameters/DatasetId'
+    post:
+      tags: [Datasets]
+      summary: Refresh Dataset
+      operationId: refreshDataset
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '202':
+          description: Accepted
+    get:
+      tags: [Datasets]
+      summary: Get Refresh History
+      operationId: getRefreshHistory
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /datasets/{datasetId}/executeQueries:
+    parameters:
+      - $ref: '#/components/parameters/DatasetId'
+    post:
+      tags: [Datasets]
+      summary: Execute Queries
+      operationId: executeQueries
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericObject'
+  /reports:
+    get:
+      tags: [Reports]
+      summary: Get Reports
+      operationId: getReports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /reports/{reportId}:
+    parameters:
+      - $ref: '#/components/parameters/ReportId'
+    get:
+      tags: [Reports]
+      summary: Get Report
+      operationId: getReport
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericObject'
+    delete:
+      tags: [Reports]
+      summary: Delete Report
+      operationId: deleteReport
+      responses:
+        '200':
+          description: OK
+  /reports/{reportId}/Clone:
+    parameters:
+      - $ref: '#/components/parameters/ReportId'
+    post:
+      tags: [Reports]
+      summary: Clone Report
+      operationId: cloneReport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+  /reports/{reportId}/ExportTo:
+    parameters:
+      - $ref: '#/components/parameters/ReportId'
+    post:
+      tags: [Reports]
+      summary: Export To File
+      operationId: exportToFile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '202':
+          description: Accepted
+  /dashboards:
+    get:
+      tags: [Dashboards]
+      summary: Get Dashboards
+      operationId: getDashboards
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /dashboards/{dashboardId}/tiles:
+    parameters:
+      - in: path
+        name: dashboardId
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Dashboards]
+      summary: Get Tiles
+      operationId: getTiles
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /groups:
+    get:
+      tags: [Groups]
+      summary: Get Groups (workspaces)
+      operationId: getGroups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+    post:
+      tags: [Groups]
+      summary: Create Group (workspace)
+      operationId: createGroup
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+  /groups/{groupId}:
+    parameters:
+      - in: path
+        name: groupId
+        required: true
+        schema: { type: string }
+    delete:
+      tags: [Groups]
+      summary: Delete Group
+      operationId: deleteGroup
+      responses:
+        '200':
+          description: OK
+  /groups/{groupId}/datasets:
+    parameters:
+      - in: path
+        name: groupId
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Datasets]
+      summary: Get Datasets In Group
+      operationId: getDatasetsInGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /groups/{groupId}/reports:
+    parameters:
+      - in: path
+        name: groupId
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Reports]
+      summary: Get Reports In Group
+      operationId: getReportsInGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /gateways:
+    get:
+      tags: [Gateways]
+      summary: Get Gateways
+      operationId: getGateways
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /apps:
+    get:
+      tags: [Apps]
+      summary: Get Apps
+      operationId: getApps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /capacities:
+    get:
+      tags: [Capacities]
+      summary: Get Capacities
+      operationId: getCapacities
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /dataflows:
+    get:
+      tags: [Dataflows]
+      summary: Get Dataflows
+      operationId: getDataflows
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+  /imports:
+    get:
+      tags: [Imports]
+      summary: Get Imports
+      operationId: getImports
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericList'
+    post:
+      tags: [Imports]
+      summary: Post Import
+      operationId: postImport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '202':
+          description: Accepted
+  /GenerateToken:
+    post:
+      tags: [EmbedToken]
+      summary: Generate Token
+      operationId: generateToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenericObject'
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    DatasetId:
+      in: path
+      name: datasetId
+      required: true
+      schema: { type: string }
+    ReportId:
+      in: path
+      name: reportId
+      required: true
+      schema: { type: string }
+  schemas:
+    GenericObject:
+      type: object
+      additionalProperties: true
+    GenericList:
+      type: object
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GenericObject'
+      additionalProperties: true

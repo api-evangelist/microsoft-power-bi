@@ -1,0 +1,32 @@
+{
+  "provider": "microsoft-power-bi",
+  "sources": [
+    "microsoft-power-bi-apps-api-openapi.yml",
+    "microsoft-power-bi-capacities-api-openapi.yml",
+    "microsoft-power-bi-dashboards-api-openapi.yml",
+    "microsoft-power-bi-dataflows-api-openapi.yml",
+    "microsoft-power-bi-datasets-api-openapi.yml",
+    "microsoft-power-bi-embedtoken-api-openapi.yml",
+    "microsoft-power-bi-gateways-api-openapi.yml",
+    "microsoft-power-bi-groups-api-openapi.yml",
+    "microsoft-power-bi-imports-api-openapi.yml",
+    "microsoft-power-bi-reports-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-power-bi-apps-api-openapi.yml",
+    "microsoft-power-bi-capacities-api-openapi.yml",
+    "microsoft-power-bi-dashboards-api-openapi.yml",
+    "microsoft-power-bi-dataflows-api-openapi.yml",
+    "microsoft-power-bi-datasets-api-openapi.yml",
+    "microsoft-power-bi-embedtoken-api-openapi.yml",
+    "microsoft-power-bi-gateways-api-openapi.yml",
+    "microsoft-power-bi-groups-api-openapi.yml",
+    "microsoft-power-bi-imports-api-openapi.yml",
+    "microsoft-power-bi-reports-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
