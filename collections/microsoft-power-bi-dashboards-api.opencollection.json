@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Power BI REST Apps Dashboards API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Dashboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards"
+          },
+          "docs": "Get Dashboards"
+        },
+        {
+          "info": {
+            "name": "Get Tiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId/tiles",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Tiles"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

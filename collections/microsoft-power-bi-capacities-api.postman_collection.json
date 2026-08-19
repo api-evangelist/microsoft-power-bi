@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "42a40492-1098-4ad5-bda8-86163c6be9c9",
+      "name": "Capacities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab955b0f-4b8d-4205-beb1-83b7845abb93",
+          "name": "Get Capacities",
+          "request": {
+            "name": "Get Capacities",
+            "description": {},
+            "url": {
+              "path": [
+                "capacities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "039bbb9a-96ca-434c-a6e4-0fd4e9430e7a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "capacities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 170.1448183991061,\n      \"key_1\": 2146.7538269870633\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.powerbi.com/v1.0/myorg",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "275b9fa3-ee7d-4268-bb39-8d857e876e96",
+    "name": "Microsoft Power BI REST Apps Capacities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Minimal OpenAPI definition for the Power BI REST API covering common operations on datasets, reports, dashboards, groups (workspaces), gateways, apps, capacities, dataflows, imports, and embed tokens.",
+      "type": "text/plain"
+    }
+  }
+}
