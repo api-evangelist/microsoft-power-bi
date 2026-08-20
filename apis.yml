@@ -87,6 +87,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com/v1.0/myorg/
   tags:
+  - Application
+  tags_raw:
   - Apps
   properties:
   - type: OpenAPI
@@ -185,6 +187,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com/v1.0/myorg/
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
